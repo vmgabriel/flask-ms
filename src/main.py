@@ -5,6 +5,7 @@ from typing import Any
 
 # Modules
 from src import flask
+from src.view import register_resources
 
 
 def suma(a: int, b: int) -> int:
@@ -15,5 +16,6 @@ def suma(a: int, b: int) -> int:
 def create_server(framework_name: str, env_data: str) -> Any:
     """Create the app configuration"""
     if framework_name == 'flask':
-        return flask.create_app(env_data)
+        flask_server = flask.create_app(env_data)
+        return register_resources(flask_server)
     raise Exception(f'Not Valid Framework name - {framework_name}')
