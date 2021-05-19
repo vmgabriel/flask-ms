@@ -1,1 +1,2 @@
-
+python-dotenv==0.17.1
+Flask==2.0.0

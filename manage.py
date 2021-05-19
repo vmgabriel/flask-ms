@@ -1,9 +1,16 @@
 """Action Run The Application"""
 
+# Libraries
+from os import getenv
+from dotenv import load_dotenv
+
 # Modules
-from src import main
+from src import create_server
+
+load_dotenv()
 
 
 if __name__ == '__main__':
-    print('data')
-    print('all datas - ', main.suma(3, 4))
+    config_name = getenv('ENV', 'local')
+    app = create_server('flask', config_name)
+    app.run()
